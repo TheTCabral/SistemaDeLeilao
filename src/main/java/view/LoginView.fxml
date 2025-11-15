@@ -5,21 +5,50 @@
 
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="controller.PessoaController"
-      spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+      spacing="20" alignment="CENTER"
+      style="-fx-padding: 40; -fx-background-color: linear-gradient(to bottom, #667eea 0%, #764ba2 100%);">
 
-    <Label text="Login Leilão" style="-fx-font-size: 20px;"/>
+    <!-- Logo/Título -->
+    <VBox alignment="CENTER" spacing="10">
+        <Label text="Sistema de Leilões"
+               style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+        <Label text="Faça login para continuar"
+               style="-fx-font-size: 14px; -fx-text-fill: white;"/>
+    </VBox>
 
-    <HBox spacing="5" alignment="CENTER_LEFT">
-        <Label text="Email:" minWidth="60"/>
-        <TextField fx:id="txtEmail" promptText="seu@email.com" HBox.hgrow="ALWAYS"/>
-    </HBox>
+    <!-- Card de Login -->
+    <VBox spacing="15" alignment="CENTER"
+          style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);"
+          maxWidth="400">
 
-    <HBox spacing="5" alignment="CENTER_LEFT">
-        <Label text="Senha:" minWidth="60"/>
-        <PasswordField fx:id="txtSenha" promptText="******" HBox.hgrow="ALWAYS"/>
-    </HBox>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="📧" style="-fx-font-size: 20px;"/>
+            <TextField fx:id="txtEmail" promptText="Email"
+                       style="-fx-font-size: 14px;" HBox.hgrow="ALWAYS" prefWidth="300"/>
+        </HBox>
 
-    <Button text="Entrar" onAction="#handleLoginButton" defaultButton="true"/>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="🔒" style="-fx-font-size: 20px;"/>
+            <PasswordField fx:id="txtSenha" promptText="Senha"
+                           style="-fx-font-size: 14px;" HBox.hgrow="ALWAYS" prefWidth="300"/>
+        </HBox>
 
-    <Label fx:id="lblStatus" style="-fx-text-fill: red;"/>
+        <Button text="Entrar" onAction="#handleLoginButton" defaultButton="true"
+                style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 10 40;"
+                maxWidth="Infinity"/>
+
+        <Separator prefWidth="300"/>
+
+        <Label text="Não tem uma conta?" style="-fx-font-size: 12px;"/>
+
+        <Button text="Cadastre-se" onAction="#handleCadastrarButton"
+                style="-fx-background-color: transparent; -fx-border-color: #667eea; -fx-border-width: 2; -fx-text-fill: #667eea; -fx-font-size: 14px; -fx-padding: 8 30;"
+                maxWidth="Infinity"/>
+
+        <Label fx:id="lblStatus" style="-fx-text-fill: #f44336; -fx-font-weight: bold;" wrapText="true" maxWidth="300"/>
+    </VBox>
+
+    <!-- Footer -->
+    <Label text="© 2025 Sistema de Leilões Online"
+           style="-fx-font-size: 10px; -fx-text-fill: white; -fx-opacity: 0.8;"/>
 </VBox>

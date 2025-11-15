@@ -5,7 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import model.Administrador;
 import model.Comprador;
+import model.Pessoa;
+import model.Vendedor;
 
 public class PessoaController {
 
@@ -21,35 +24,55 @@ public class PessoaController {
         String senha = txtSenha.getText();
 
         try {
-            // 1. Validação (Regra de Negócio no Model)
-            // (Aqui poderíamos validar o formato do email antes de ir ao DAO)
+            // 1. Validação básica
             if (email.isEmpty() || senha.isEmpty()) {
                 lblStatus.setText("Email e senha são obrigatórios.");
                 return;
             }
 
-            // 2. Chama o DAO
-            Comprador comprador = pessoaDAO.validateLogin(email, senha);
+            // 2. Validar login no DAO
+            Pessoa pessoa = pessoaDAO.validateLogin(email, senha);
 
-            if (comprador != null) {
-                // 3. Sucesso: Navega para a próxima tela
+            if (pessoa != null) {
                 lblStatus.setText("Login bem-sucedido!");
 
-                // Passa o objeto 'comprador' para a próxima cena
-                application.Main.changeScene(
-                        "/view/LeilaoView.fxml",
-                        "Leilões Ativos - " + comprador.getNome(),
-                        comprador
-                );
+                // 3. Redirecionar para a tela apropriada baseado no tipo
+                if (pessoa instanceof Comprador) {
+                    application.Main.changeScene(
+                            "/view/LeilaoView.fxml",
+                            "Leilões Ativos - " + pessoa.getNome(),
+                            pessoa
+                    );
+                } else if (pessoa instanceof Vendedor) {
+                    application.Main.changeScene(
+                            "/view/MenuVendedorView.fxml",
+                            "Menu Vendedor - " + pessoa.getNome(),
+                            pessoa
+                    );
+                } else if (pessoa instanceof Administrador) {
+                    application.Main.changeScene(
+                            "/view/AdminView.fxml",
+                            "Administração - " + pessoa.getNome(),
+                            pessoa
+                    );
+                }
 
             } else {
-                // 4. Falha
                 lblStatus.setText("Email ou senha inválidos.");
             }
 
         } catch (Exception e) {
-            lblStatus.setText("Erro de banco de dados: " + e.getMessage());
+            lblStatus.setText("Erro: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    protected void handleCadastrarButton() {
+        application.Main.changeScene(
+                "/view/CadastroView.fxml",
+                "Cadastro de Usuário",
+                null
+        );
     }
 }
