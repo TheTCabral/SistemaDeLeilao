@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.PessoaController"
+      spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+
+    <Label text="Login Leilão" style="-fx-font-size: 20px;"/>
+
+    <HBox spacing="5" alignment="CENTER_LEFT">
+        <Label text="Email:" minWidth="60"/>
+        <TextField fx:id="txtEmail" promptText="seu@email.com" HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <HBox spacing="5" alignment="CENTER_LEFT">
+        <Label text="Senha:" minWidth="60"/>
+        <PasswordField fx:id="txtSenha" promptText="******" HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <Button text="Entrar" onAction="#handleLoginButton" defaultButton="true"/>
+
+    <Label fx:id="lblStatus" style="-fx-text-fill: red;"/>
+</VBox>

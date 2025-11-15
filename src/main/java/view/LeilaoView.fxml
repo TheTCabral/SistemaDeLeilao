@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.LeilaoController" spacing="10" style="-fx-padding: 10;">
+
+    <Label fx:id="lblBoasVindas" style="-fx-font-size: 16px;"/>
+
+    <TableView fx:id="tabelaLeiloes" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn text="Item">
+                <cellValueFactory><PropertyValueFactory property="item.nome" /></cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Descrição">
+                <cellValueFactory><PropertyValueFactory property="item.descricao" /></cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Lance Atual (R$)">
+                <cellValueFactory><PropertyValueFactory property="maiorLanceValor" /></cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Encerra em">
+                <cellValueFactory><PropertyValueFactory property="dataFim" /></cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <Button text="Dar Lance no Item Selecionado" onAction="#handleDarLanceButton" />
+    <Label fx:id="lblStatus" style="-fx-text-fill: red;"/>
+</VBox>
