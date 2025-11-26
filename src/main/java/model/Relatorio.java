@@ -1,12 +1,16 @@
 package model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@AllArgsConstructor
+
 public class Relatorio {
     private int id;
     private String tipo;
@@ -28,7 +32,6 @@ public class Relatorio {
         setGeradoPor(geradoPor);
     }
 
-    // Setters com validações
     public void setTipo(String tipo) {
         if (tipo == null || tipo.trim().isEmpty()) {
             throw new IllegalArgumentException("Tipo de relatório não pode ser vazio.");
@@ -48,6 +51,11 @@ public class Relatorio {
             throw new IllegalArgumentException("ID do gerador deve ser válido.");
         }
         this.geradoPor = geradoPor;
+    }
+public void GerarRelatorio() {
+        // Lógica para gerar o relatório
+        this.dataGeracao = LocalDateTime.now();
+        // Possivelmente popular dadosJson com informações relevantes
     }
 
     @Override

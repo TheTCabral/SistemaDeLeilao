@@ -1,13 +1,15 @@
 package model;
 
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
-import lombok.Getter;
+
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Lance {
 
     private int id;
@@ -20,11 +22,6 @@ public class Lance {
         setValor(valor);
         this.dataHora = LocalDateTime.now();
     }
-
-    public int getId() { return id; }
-    public Comprador getComprador() { return comprador; }
-    public double getValor() { return valor; }
-    public LocalDateTime getDataHora() { return dataHora; }
 
     public void setComprador(Comprador comprador) {
         if (comprador == null) {

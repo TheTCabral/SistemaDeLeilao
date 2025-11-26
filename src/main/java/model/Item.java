@@ -1,10 +1,14 @@
 package model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Item {
     private int id;
     private String nome;
@@ -13,8 +17,6 @@ public class Item {
     private String imagemUrl;
     private Vendedor vendedor;
 
-    // Construtor padrão
-    public Item() {}
 
     // Construtor com parâmetros principais
     public Item(String nome, String descricao, double valorInicial, Vendedor vendedor) {
