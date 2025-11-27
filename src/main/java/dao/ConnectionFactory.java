@@ -42,6 +42,7 @@ public class ConnectionFactory {
 
     /**
      * Obtém uma conexão com o banco de dados
+     *
      * @return Connection objeto de conexão
      * @throws SQLException se houver erro na conexão
      */
@@ -67,6 +68,7 @@ public class ConnectionFactory {
 
     /**
      * Fecha uma conexão com o banco de dados
+     *
      * @param conn Connection a ser fechada
      */
     public static void closeConnection(Connection conn) {
@@ -83,6 +85,7 @@ public class ConnectionFactory {
 
     /**
      * Testa a conexão com o banco de dados
+     *
      * @return true se a conexão foi bem-sucedida
      */
     public static boolean testConnection() {
@@ -109,24 +112,5 @@ public class ConnectionFactory {
             e.printStackTrace();
         }
         return false;
-    }
-
-    /**
-     * Método main para teste standalone
-     */
-    public static void main(String[] args) {
-        System.out.println("==================================");
-        System.out.println("  TESTE DE CONEXÃO - BANCO DE DADOS");
-        System.out.println("==================================\n");
-
-        boolean sucesso = testConnection();
-
-        System.out.println("\n==================================");
-        if (sucesso) {
-            System.out.println("✅ Sistema pronto para uso!");
-        } else {
-            System.out.println("❌ Configure o banco antes de usar");
-        }
-        System.out.println("==================================\n");
     }
 }
